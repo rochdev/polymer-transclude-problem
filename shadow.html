@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <title>Polymer transclude problem - shadow DOM</title>
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script>
+    window.Polymer = window.Polymer || {};
+    window.Polymer.dom = 'shadow';
+  </script>
+  <link rel="import" href="bower_components/paper-button/paper-button.html"></script>
+</head>
+<body>
+  <paper-button raised>Without transclusion</paper-button>
+  <paper-button raised ng-if="true">Wit transclusion</paper-button>
+
+  <p>
+    Notice how with translusion the DOM gets messed up. In this specific
+    example, the inner <code>div.content</code> gets repeated inside of itself.
+    It can also be seen visually from the fact that the box-shadow is repeated.
+  </p>
+
+  <script src="bower_components/angular/angular.js"></script>
+  <script>
+    angular.module('app', []);
+  </script>
+</body>
+</html>
